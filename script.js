@@ -62,7 +62,7 @@ function fadeIn() {
     var pW = bw[1] / (bw[0] + bw[1]);
     var hW = Math.floor(pW * 256);
     var hex = rgbToHex(hW, hW, hW);
-    if(pW > 50) {
+    if(pW > 0.5) {
       winner = 1;
     } else {
       winner = 0;
