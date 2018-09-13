@@ -1,7 +1,86 @@
 var backG;
 
 $(document).ready( function() {
-// Variable to hold request
+    
+});
+
+window.addEventListener('DOMContentLoaded', init)
+
+
+function fadeIn() {
+  var t;
+  backG.style.opacity = "0";
+  backG.style.zIndex = "2";
+  cG = calcColour();
+  backG.style.backgroundColor = cG;
+
+  if(winner == 1) {
+    document.getElementById("textG").innerHTML = "White is winning.";
+    document.getElementById("textG").style.color = "black";
+  } else {
+    document.getElementById("textG").innerHTML = "Black is winning.";
+    document.getElementById("textG").style.color = "white";
+  }
+
+  if(parseFloat(backG.style.opacity) == 0) {
+    t = setInterval(function() {
+      if(parseFloat(backG.style.opacity) < 1) {
+        backG.style.opacity = (parseFloat(backG.style.opacity) + 0.03).toString();
+      } else {
+        clearInterval(t);
+ //       console.log("Done!");
+      }
+    }, 10 );
+  }
+}
+
+  var spreadsheetA = [];
+  var bw = [0,0];     //[b,w]
+  var cG;
+  var winner = 0;   // 0 black; 1 white
+
+  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1NRzhAa8deKKSYGvqy53aaK-HbOT1STmsdBv0HnqTj5Y/edit?usp=sharing';
+
+  function init() {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+  }
+
+  function showInfo(data, tabletop) {
+//    alert('Successfully processed!')
+ //   console.log(data);
+    spreadsheetA = data;
+    onit();
+
+    bw[0] = parseInt(spreadsheetA[0].BlackTotal);
+    bw[1] = parseInt(spreadsheetA[0].WhiteTotal);
+
+  }
+
+  function calcColour() {
+    var pW = bw[1] / (bw[0] + bw[1]);
+    var hW = Math.floor(pW * 256);
+    var hex = rgbToHex(hW, hW, hW);
+    if(pW > 50) {
+      winner = 1;
+    } else {
+      winner = 0;
+    }
+    return hex;
+  }
+
+  function componentToHex(c) {
+    var hex = c.toString(16);
+    return hex.length == 1 ? "0" + hex : hex;
+}
+
+function rgbToHex(r, g, b) {
+    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function setup() {
+  // Variable to hold request
 var request;
 
   backG = document.getElementById("backG");
@@ -43,7 +122,7 @@ $("#food").submit(function(event){
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
-        console.log("Hooray, it worked!");
+ //       console.log("Hooray, it worked!");
     });
 
     // Callback handler that will be called on failure
@@ -102,7 +181,7 @@ $("#foo").submit(function(event){
     // Callback handler that will be called on success
     request.done(function (response, textStatus, jqXHR){
         // Log a message to the console
-        console.log("Hooray, it worked!");
+ //       console.log("Hooray, it worked!");
     });
 
     // Callback handler that will be called on failure
@@ -124,78 +203,10 @@ $("#foo").submit(function(event){
     fadeIn();
 
 });
+}
 
-});
-
-function fadeIn() {
-  var t;
-  backG.style.opacity = "0";
-  backG.style.zIndex = "2";
+function onit() {
   cG = calcColour();
-  backG.style.backgroundColor = cG;
-
-  if(winner == 1) {
-    document.getElementById("textG").innerHTML = "White is winning.";
-    document.getElementById("textG").style.color = "black";
-  } else {
-    document.getElementById("textG").innerHTML = "Black is winning.";
-    document.getElementById("textG").style.color = "white";
-  }
-
-  if(parseFloat(backG.style.opacity) == 0) {
-    t = setInterval(function() {
-      if(parseFloat(backG.style.opacity) < 1) {
-        backG.style.opacity = (parseFloat(backG.style.opacity) + 0.03).toString();
-      } else {
-        clearInterval(t);
-        console.log("Done!");
-      }
-    }, 10 );
-  }
+  setup();
 }
 
-  var spreadsheetA = [];
-  var bw = [0,0];     //[b,w]
-  var cG;
-  var winner = 0;   // 0 black; 1 white
-
-  var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1NRzhAa8deKKSYGvqy53aaK-HbOT1STmsdBv0HnqTj5Y/edit?usp=sharing';
-
-  function init() {
-    Tabletop.init( { key: publicSpreadsheetUrl,
-                     callback: showInfo,
-                     simpleSheet: true } )
-  }
-
-  function showInfo(data, tabletop) {
-//    alert('Successfully processed!')
-    console.log(data);
-    spreadsheetA = data;
-
-    bw[0] = parseInt(spreadsheetA[0].BlackTotal);
-    bw[1] = parseInt(spreadsheetA[0].WhiteTotal);
-
-  }
-
-  function calcColour() {
-    var pW = bw[1] / (bw[0] + bw[1]);
-    var hW = Math.floor(pW * 256);
-    var hex = rgbToHex(hW, hW, hW);
-    if(pW > 50) {
-      winner = 1;
-    } else {
-      winner = 0;
-    }
-    return hex;
-  }
-
-  function componentToHex(c) {
-    var hex = c.toString(16);
-    return hex.length == 1 ? "0" + hex : hex;
-}
-
-function rgbToHex(r, g, b) {
-    return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-}
-
-  window.addEventListener('DOMContentLoaded', init)
