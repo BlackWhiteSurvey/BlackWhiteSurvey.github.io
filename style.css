@@ -1,0 +1,141 @@
+/*body {
+  margin: 2em;
+}
+aside {
+    background: #1f8dd6; 
+    padding: 0.3em 1em;
+    border-radius: 3px;
+    color: #fff;
+    margin-bottom: 2em;
+}
+textarea {
+  width: 100%;
+}
+.content-head {
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 2em 0 1em;
+}
+.is-center {
+  text-align: center;
+}
+.button-success {
+  color: white;
+  border-radius: 4px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: rgb(28, 184, 65); 
+}
+.button-xlarge {
+  font-size: 125%;
+}
+button {
+  float: right;
+}
+#name, #email {
+  width: 50%;
+}*/
+
+
+.hiddenButton1 {
+    position: absolute;
+    top: 0%;
+    left: 0%;
+    height: 100%;
+    width: 50%;
+    background-color: black;
+    border: none;
+
+}
+
+.hiddenButton1:hover {
+    background-color: #232323;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+.hiddenButton2 {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    height: 100%;
+    width: 50%;
+    background-color: white;
+    border: none;
+
+}
+
+.hiddenButton2:hover {
+    background-color: #e4e4e4;
+    -webkit-transition: background-color 200ms linear;
+    -ms-transition: background-color 200ms linear;
+    transition: background-color 200ms linear;
+}
+
+#blackT {
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-25%,-50%);
+  color: white;
+  font-size: 5em;
+  font-weight: 500;
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#whiteT {
+  position: absolute;
+  top: 50%;
+  left: 75%;
+  transform: translate(-75%,-50%);
+  color: black;
+  font-size: 5em;
+  font-weight: 500;
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#or1 {
+  position: absolute;
+  text-align: center;
+  font-style: italic;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  color: white;
+  font-size: 3em;
+  background-color: #d7d3e2;
+  width: 10%;
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+#backG {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  background-color: yellow;
+  z-index: -1;
+  text-align: center;
+  vertical-align: middle;
+  font-size: 5em;
+
+}
+
+#textG {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1em;
+  cursor: default;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
+
+body{
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+}
